@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dynamic Form</title>
+	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+
+<!-- title_1-->	<link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Merriweather:ital,wght@1,700&family=Poppins&display=swap" rel="stylesheet">
+
+<!-- title_2--><link href="https://fonts.googleapis.com/css2?family=Bona+Nova&family=Lora:ital@0;1&family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+
+<!--f2d1-p_tag--><link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+<!--f2d2-p_tag--><link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+	.maindiv{
+		background-image: url(bg1.png);
+		/* background-image: url(bg2.jpeg); */
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 150vh;
+		position: relative;
+		
+
+	}
+	#rightdiv{
+/*		height: 20px;*/
+		/* width: 800px; */
+		border: 2px solid black;
+
+		padding: 15px 20px;
+		visibility: hidden;
+		
+	}
+	#selopt{							/* select field*/
+		height:40px ;
+		width: 240px;
+		font-size: 24px;
+		margin: 20px auto;
+		padding-left: 5px;
+		/* padding-right: 15px; */
+		background-color: #0F3556;
+		color: white;
+		border-radius: 5px;
+		cursor: pointer;
+
+		/* box-shadow: 5px 5px 5px rgba(0,0,0,0.5); */
+	}
+	
+	#gendiv{
+		width: 400px;
+		/* margin-right: 90px; */
+		/* border: 2px solid black; */
+
+	}
+
+	#form1{
+		/* width: 500px; */
+		/* border: 2px solid #BCC5C5 ; */
+		border: 2px solid rgba(0,0,0,0.2) ;
+		box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+		background-color: rgba(0,0,0,0.2);
+		/* border: none; */
+		border-radius: 5px;
+		padding: 10px 20px;
+		position: absolute;
+		top: 80px;
+		left: 35%; 
+
+		/* background-color: #E1DFDE ; */
+		/* background-color: #F19D08  ; */
+		/* background-color:transparent; */
+
+		visibility: hidden;
+
+
+	}
+	#form2{
+		/* width: 500px; */
+		border: 3px solid #EEC428;
+		border-radius: 5px;
+		background-color: #F99F14;
+		/* background-image: url(bg4.png); */
+		box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: 30px 30px;
+		/* display: flex; */
+		visibility: hidden;
+
+		position: absolute;
+		top: 80px;
+		left: 35%;
+
+	}
+
+	#f2d1{
+		/* height:100px; */
+		/* width:150px; */
+		/* padding-left: 30px; */
+		/* border:2px solid black */
+		margin-right: 40px;
+	}
+	#f2d1 p{
+		font-family: 'Lora', serif;
+
+	}
+
+	#f2d2{
+		/* height:100px; */
+		/* width:200px; */
+		/* border:2px solid black */
+	}
+	#f2d2 p{
+		font-family: 'PT Serif', serif;
+
+	}
+
+	input{
+		padding: 3px 15px;	
+		font-size: 20px;
+		border: 2px solid black;
+		border-radius: 5px;
+		/* outline:none */
+	}
+	#title1{
+		font-family: 'Merriweather', serif;
+		font-size: 70px;
+	}
+	#titlinp{
+		padding: 2px 15px;	
+		font-size: 18px;
+		border: 2px solid black;
+		border-radius: 5px;
+
+	}
+
+	label{
+		font-size: 20px;
+
+	}
+	button{
+		background-color: green;
+		color: white;
+		padding: 8px 12px;
+		border: 1px solid green;
+		border-radius: 10px;
+		margin-left: 5px;
+	}
+	button:hover{
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+
+	}
+	.clsbtn{
+		background-color: red;
+		padding:0px 8px;
+		font-size: 15px;
+		height: 30px;
+		font-weight: bold;
+		border: 1px solid red;
+		border-radius: 50%;
+		margin-left: 90px;
+
+
+	}
+	select{
+		/* height:30px ; */
+		width: 200px;
+		font-size: 20px;
+		/* margin: 20px auto; */
+	}
+	p{
+		font-size: 30px;
+		margin-bottom: 10px;
+		color: white;
+		font-weight: bold;
+	}
+	h3{
+		font-size: 40px;
+		font-family: 'Bona Nova', serif;
+
+	}
+
+
+
+</style>
+
+
+<body>
+	<div class="d-flex flex-column align-items-center maindiv">
+		<div class=" pt-5">	
+			<div class="text-center mt-4"> <h2 id="title1" class="mb-5">CREATE YOUR FORM</h2> 
+				<input type="text" name="" id="titlinp" placeholder="Enter form name">
+			</div>
+			<!-- <div> <input type="text" name="" id="titlinp" placeholder="Enter form name"></div> -->
+			<div class="text-center	">
+				<select id="selopt" onchange="add1()">
+					<option value=""> Select fields </option>
+					<option value="text"> Text </option>
+					<option value="number"> Number </option>
+					<option value="email"> Email </option>
+					<option value="radio"> Radio </option>
+					<option value="select"> Select </option>
+					<option value="checkbox"> Checkbox </option>
+					<option value="submit"> Submit </option>
+
+				</select>	
+
+				<!-- <button onclick="add1()">Add</button> -->
+
+			</div>
+
+
+			<div id="rightdiv" class="ms-5 d-flex flex-column ">
+			</div>
+
+		</div>
+
+		<div id="row2" class="d-flex">
+			<div id="form1">
+				<div class="text-center mt-3 mb-5"> <h3 id="title2"> </h3></div>
+				
+			</div>
+			<div id="form2">
+				<div class="text-center mt-3 mb-5"> <h3 id="title2_2"> </h3></div>
+				<div class="d-flex">
+					<div id="f2d1" > </div>	
+					<div id="f2d2" > </div>
+				</div>
+					
+			</div>
+		</div>
+	</div>
+	<script>
+
+		let md = document.getElementsByClassName('maindiv')
+		let sel = document.getElementById('selopt')
+
+		let rdiv = document.getElementById('rightdiv')
+		let tit1 = document.getElementById('title1')
+		let tit2 = document.getElementById('title2')     //h3
+		let tit2_2 = document.getElementById('title2_2')     //h3
+		let titinp = document.getElementById('titlinp')     //input
+
+		
+			
+		let opt = document.getElementsByTagName('option')
+		
+		add1=()=>{
+
+			// if(){
+
+			// }
+			rdiv.style.visibility="visible";
+
+			let rodiv = document.createElement("div")
+				rodiv.className="d-flex  mt-3 rovdiv"
+				rodiv.id="rowdiv"
+			let div2 = document.createElement("div")
+			div2.id="labdiv"
+			let div3 = document.createElement("div")
+			div3.id="gendiv"
+			div3.className="gdiv"
+			let inp1 = document.createElement("input")
+			let addbtn = document.createElement("button")
+				// addbtn.style.border="2px solid black"
+				addbtn.style.marginRight="20px"
+			let inp2 = document.createElement("input")
+				inp2.className="fininp"
+			inp2.type=sel.value
+			// inp2.placeholder=sel.innerHTML
+			
+
+			let cbtn = document.createElement("button")
+				cbtn.className="clsbtn"
+				// cbtn.style.height="30px"
+			cbtn.addEventListener('click',remov1=>{
+				cbtn.parentNode.remove()
+			})
+
+
+			let adtxt = document.createTextNode("Add")
+			let bttext=document.createTextNode("x")
+			
+			div2.appendChild(inp1)
+			div2.appendChild(addbtn)
+
+			// div3.appendChild(inp2)
+
+
+			addbtn.appendChild(adtxt)    //Add
+			cbtn.appendChild(bttext)    // x
+			inp1.placeholder="Label"
+
+			addbtn.addEventListener('click',add2=>{
+				div2.innerHTML="";
+
+				let lab1 = document.createElement("label")
+					lab1.className="finlab"
+				lab1txt=document.createTextNode(`${inp1.value} :-`)
+
+				lab1.appendChild(lab1txt)
+				div2.appendChild(lab1)
+				div2.style.width="100px"
+			})
+
+			// console.log(sel.value)
+			rodiv.appendChild(div2)
+			let sel1
+			let div4 
+			if(sel.value=="select"){
+				div5 = document.createElement("div")
+
+				 sel1 = document.createElement("select")
+				sel1.style.width="200px"
+				sel1.className="fselinp fininp"
+				// div4.appendChild(sel1)
+				div5.appendChild(sel1)
+				div3.appendChild(div5)
+				// div4.innerHTML=""
+
+			}
+			div3.appendChild(inp2)
+			
+			if(sel.value=="radio"){
+
+				inp2.type="text"
+				// let div3 = document.createElement("div")
+				let addbtn3 = document.createElement("button")
+				let donbtn1 = document.createElement("button")
+				let adtxt3 = document.createTextNode("Add")
+				let dontxt1 = document.createTextNode("Done")
+				addbtn3.appendChild(adtxt3)
+				donbtn1.appendChild(dontxt1)
+				div3.appendChild(addbtn3)
+				div3.appendChild(donbtn1)
+
+				addbtn3.addEventListener('click',add3=>{
+					// div3.innerHTML=""
+					let rinp=document.createElement('input')
+					rinp.className="fininp"
+					rinp.type="radio"
+					rinp.name=inp1.value
+					rinp.value=inp2.value
+					// gentxt=document.createTextNode(`${inp2.value}`)
+					span=document.createElement("span")
+					span.innerHTML=inp2.value
+					span.style.fontSize="20"
+					inp2.value=""
+
+					div3.appendChild(rinp)
+					// div3.appendChild(gentxt)
+					div3.appendChild(span)
+					// console.log(inp2.value)
+					
+					div4 = document.createElement("div")
+					div4.id="divfour"
+					div4.appendChild(inp2)
+					div4.appendChild(addbtn3)
+					div4.appendChild(donbtn1)
+
+					div3.appendChild(div4)
+					donbtn1.addEventListener("click",don1=>{
+						donbtn1.parentNode.remove()
+					})
+					// console.log(donbtn1.parentNode)
+
+					// fun2=()=>{
+					// 	div4.innerHTML=""
+					// }
+					// div4.childNodes[0].remove()
+
+				})
+
+
+			}
+			let d4 =document.getElementById('divfour')
+			// d4.style.display="none"
+
+			if(sel.value=="select"){
+				// div4.remove();
+				// console.log(div)
+
+				inp2.type="text"
+				let addbtn4 = document.createElement("button")
+				let donbtn2 = document.createElement("button")
+
+				let adtxt4 = document.createTextNode("Add")
+				let dontxt2 = document.createTextNode("Done")
+
+				addbtn4.appendChild(adtxt4)
+				donbtn2.appendChild(dontxt2)
+				div3.appendChild(addbtn4)
+				div3.appendChild(donbtn2)
+
+				addbtn4.addEventListener('click',add4=>{
+					let opt1 = document.createElement('option')
+					opt1.innerHTML=inp2.value
+					opt1.value=inp2.value
+					sel1.appendChild(opt1)
+					inp2.value="";
+
+					// console.log(donbtn2.parentNode.childNodes)
+					var numm = donbtn2.parentNode.childNodes;
+					// console.log(numm);
+
+					donbtn2.addEventListener("click",don2=>{
+						// donbtn2.parentNode.childNodes[1].remove()
+						// donbtn2.parentNode.childNodes[2].remove()
+						// donbtn2.parentNode.childNodes[3].remove()
+						for(var n=1; n<numm.length; n++){
+							// console.log(n);
+							// donbtn2.parentNode.removeChild(numm[n]);
+							numm[n].style.display = "none";
+						}
+						
+					})
+					// let div5 = document.createElement("div")
+
+					// div5.appendChild(inp2)
+					// div5.appendChild(addbtn4)
+
+					// div3.appendChild(div5)					
+
+				 }) 
+
+
+			}
+
+			if(sel.value=="checkbox"){
+				// div4.removeChild(inp2)
+
+				inp2.type="text"
+				inp2.placeholder="Option"
+				let addbtn5 = document.createElement("button")
+				let donbtn3 = document.createElement("button")
+
+				let adtxt5 = document.createTextNode("Add")
+				let dontxt3 = document.createTextNode("Done")
+
+				addbtn5.appendChild(adtxt5)
+				donbtn3.appendChild(dontxt3)
+
+				div3.appendChild(addbtn5)
+				div3.appendChild(donbtn3)
+
+				addbtn5.addEventListener('click',add5=>{
+					let chekinp = document.createElement('input')
+					chekinp.className="fininp"
+					chekinp.type="checkbox"
+					chekinp.value=inp2.value
+					// chektxt=document.createTextNode(`${inp2.value}`)
+					// chekinp.value=inp2.value
+					span1=document.createElement("span")
+					span1.innerHTML=inp2.value
+					span1.style.fontSize="20px"
+					div3.appendChild(chekinp)
+					div3.appendChild(span1)
+					inp2.value=""
+
+			let div6 = document.createElement("div")
+
+					div6.appendChild(inp2)
+					div6.appendChild(addbtn5)
+					div6.appendChild(donbtn3)
+
+
+					div3.appendChild(div6)
+
+					donbtn3.addEventListener("click",don3=>{
+						donbtn3.parentNode.remove()
+					})
+					
+
+				}) 
+
+
+			}
+					
+			rodiv.appendChild(div3)
+			rodiv.appendChild(cbtn)	
+			rdiv.appendChild(rodiv)
+			
+			let fom1 = document.getElementById("form1")
+			let fom2 = document.getElementById("form2")
+
+			if(sel.value=="submit"){
+				alert('Is your form complete?')
+					div2.remove();
+					// console.log(cbtn)
+					cbtn.style.display="none";
+
+					rodiv.className="text-center"
+					inp2.style.marginTop="20px"
+					inp2.addEventListener('click',sub=>{
+						// alert("form submit")
+						tit1.style.visibility="hidden";    		// title
+						sel.style.visibility="hidden";     		// select field
+						rdiv.style.visibility="hidden";	   		// right div
+						fom1.style.visibility= "visible";  		// form1
+						md[0].style.backgroundImage="url('bg2.jpeg')"
+						tit2.innerHTML=titinp.value
+						titinp.style.display="none"
+						inp2.remove()
+						let  b = document.getElementsByClassName("clsbtn")
+						// console.log(b.length)
+						for(i=0; i<b.length; i++){
+							// console.log(b[i]);
+							b[i].style.display = "none";
+						}
+						fom1.innerHTML +=rdiv.innerHTML;
+						// fom1.appendChild(rdiv)
+						// rdiv.style.width="500px"
+							// rdiv.style.visibility="hidden"
+						var z = document.getElementById("form1")
+						// console.log(inp2.value)
+
+						let sub2 = document.createElement("button")
+						let fom1div = document.createElement("div")
+							fom1div.style.textAlign="center"
+							fom1div.style.marginTop="20px"
+							sub2.innerHTML="Submit"
+							fom1div.appendChild(sub2)
+							fom1.appendChild(fom1div)
+						sub2.addEventListener('click',sub2=>{
+							fom1.style.visibility="hidden"
+							fom2.style.visibility="visible"
+							tit2_2.innerHTML=titinp.value
+							md[0].style.backgroundImage="url('bg3.jpeg')"
+
+							let rovdiv=document.getElementsByClassName("rovdiv")
+							var finp = document.getElementsByClassName("fininp")
+							var gdiv = document.getElementsByClassName("gdiv")
+							// fom2.innerHTML=fom1.innerHTML
+							// for(j=0; j<finp.length ;j++){
+							// // 	console.log(finp[j])
+							// 	finp[j].style.display="none"
+
+							// 		if(finp[j].type=="text" || finp[j].type=="number" || finp[j].type=="email"){
+							// 			console.log(finp[j].value)
+							// 			let ptag2 = document.createElement("p")
+
+							// 				ptag2.innerHTML=finp[j].value
+
+							// 			for(zz=gdiv.length/2; zz<=gdiv.length; zz++){
+
+							// 				gdiv[zz].appendChild(ptag2)
+
+
+							// 			}
+							// 			// gdiv.innerHTML=finp[j].value
+							// 			// if(finp[j].value !==""){
+							// 				// console.log(finp[j].value)
+							// 				// gdiv.innerHTML=finp[j].value
+							// 				// finp[j].style.visibility="hidden"
+							// 				// let ptag2 = document.createElement("p")
+
+							// 				// ptag2.innerHTML=finp[j].value
+							// 				// // // console.log(ptag2)
+
+							// 				// gdiv.appendChild(ptag2)
+
+							// 				// f2rodv.appendChild(ptag2)
+							// 				// fom2.appendChild(f2rodv)
+
+							// 			// }
+							// 		}
+							// 	}
+							// for(z=rovdiv.length/2 ;z<rovdiv.length ; z++){
+							// 	// console.log(rovdiv.length)
+							// 	// fom2.appendChild(rovdiv[z])
+							// 	// for(x=gdiv.length/2; x<gdiv.length ; x++){
+							// 	// 	console.log(gdiv[x])
+									
+							// 	// }
+
+								
+
+							// }
+									///////-------old-code---\\\\
+							var finp = document.getElementsByClassName("fininp")
+							var flab = document.getElementsByClassName("finlab")
+							var fsel = document.getElementsByClassName("fselinp")
+							
+							let f2d1 = document.getElementById("f2d1")
+							let f2d2 = document.getElementById("f2d2")
+							let ptag3 = document.createElement("p")
+							let arr=[]
+							// console.log(finp[1].value)
+							// finp[1].style.display="none"
+							// div3.innerHTML=finp[1].value
+							// let f2rodv
+							for(k=flab.length/2;k<flab.length;k++){
+								
+								//  f2rodv = document.createElement("div")
+								// f2rodv.style.border="2px solid black"
+								// f2rodv.className="d-flex"
+								// console.log(flab[k])
+								let ptag1 = document.createElement("p")
+								
+								ptag1.innerHTML=flab[k].innerHTML
+
+								// console.log(flab[k].innerHTML)
+
+									f2d1.appendChild(ptag1)
+									// f2rodv.appendChild(ptag1)
+									// fom2.appendChild(f2rodv)
+							}
+
+							for(j=finp.length/2; j<finp.length ;j++){
+								// console.log(finp.length)
+
+								if(finp[j].type=="text" || finp[j].type=="number" || finp[j].type=="email"){
+									// if(finp[j].value !==""){
+										// console.log(finp[j])
+
+										let ptag2 = document.createElement("p")
+
+										ptag2.innerHTML=finp[j].value
+										// console.log(ptag2)
+
+										f2d2.appendChild(ptag2)
+
+										// f2rodv.appendChild(ptag2)
+										// fom2.appendChild(f2rodv)
+
+									// }
+								}
+
+								else if(finp[j].type=="radio"){
+									if(finp[j].checked==true){
+										let ptag2 = document.createElement("p")
+										ptag2.innerHTML=finp[j].value
+										f2d2.appendChild(ptag2)
+										
+									}
+								}
+								
+								else if(finp[j].type=="checkbox"){
+									if(finp[j].checked==true){
+										// let ptag2 = document.createElement("p")
+										// ptag2.innerHTML=finp[j].value
+										// f2d2.appendChild(ptag2)
+										
+										//----------------
+										
+										// 	 arr +=finp[j].value
+										// console.log(arr)
+
+										ptag3.innerHTML +=finp[j].value +" , "
+				
+										f2d2.appendChild(ptag3)
+
+
+									}
+								}
+								else{
+									console.log(fsel)
+									for(l=fsel.length/2;l<fsel.length; l++){
+									let ptag2 = document.createElement("p")
+
+										// console.log(fsel[l])
+										// console.log(fsel[l].length)
+										ptag2.innerHTML=fsel[l].value
+										f2d2.appendChild(ptag2)
+									}
+								}
+																		
+								
+							}
+
+
+						})
+
+					})
+
+					
+
+					
+			}
+		}
+
+		
+		
+
+
+
+		
+	</script>
+
+	<script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
